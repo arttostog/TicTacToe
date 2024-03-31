@@ -1,9 +1,9 @@
 #ifndef LOGIC_H
 #define LOGIC_H
 
-#include <stdio.h>
 #include "input.h"
+#include "pos.h"
 
-void doLogic(char* winner, pos* position, char matrix[][3], char symbol, _Bool* crosses);
+void doLogic(char* winner, char matrix[3][3], char* symbol);
 
 #endif

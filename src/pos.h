@@ -2,8 +2,8 @@
 #define STRUCT_H
 
 typedef struct {
-    unsigned short x;
-    unsigned short y;
+    char x;
+    char y;
 } pos;
 
 #endif

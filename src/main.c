@@ -2,9 +2,7 @@
 #include "output.h"
 #include "logic.h"
 
-_Bool crosses = 1;
-pos position;
-char winner = ' ', symbol, matrix[3][3] = {
+char symbol = 'X', winner = 0, matrix[3][3] = {
     {' ', ' ', ' '},
     {' ', ' ', ' '},
     {' ', ' ', ' '}
@@ -12,10 +10,9 @@ char winner = ' ', symbol, matrix[3][3] = {
 
 int main()
 {
-    while(winner == ' ') {
-        symbol = crosses ? 'X' : 'O';
+    while(!winner) {
         printMenu(matrix, symbol);
-        doLogic(&winner, &position, matrix, symbol, &crosses);
+        doLogic(&winner, matrix, &symbol);
     }
     printMenu(matrix, symbol);
     printf(winner == '!' ? "Draw%c\n" : "Winner is %c!\n", winner);
