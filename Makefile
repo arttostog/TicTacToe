@@ -9,8 +9,8 @@ CREATE_FOLDER = if not exist "$(BUILD_FOLDER)" (mkdir "$(BUILD_FOLDER)" && mkdir
 REMOVE_FOLDER = if exist "$(BUILD_FOLDER)" (rmdir /s /q "$(BUILD_FOLDER)")
 
 # For linux
-#CREATE_FOLDER = mkdir $(BUILD_FOLDER) && mkdir $(BUILD_FOLDER)/$(BIN_FOLDER)
-#REMOVE_FOLDER = rm -r $(BUILD_FOLDER)
+#CREATE_FOLDER = if [ ! -d "$(BUILD_FOLDER)" ]; then mkdir $(BUILD_FOLDER) && mkdir $(BUILD_FOLDER)/$(BIN_FOLDER); fi
+#REMOVE_FOLDER = if [ -d "$(BUILD_FOLDER)" ]; then rm -r $(BUILD_FOLDER); fi
 
 $(BUILD_FOLDER)/$(BIN_FOLDER)$(TARGET): $(BUILD_FOLDER) $(BUILD_FOLDER)/main.o $(BUILD_FOLDER)/output.o $(BUILD_FOLDER)/logic.o $(BUILD_FOLDER)/input.o
 	gcc $(BUILD_FOLDER)/main.o $(BUILD_FOLDER)/output.o $(BUILD_FOLDER)/logic.o $(BUILD_FOLDER)/input.o -o $(BUILD_FOLDER)/$(BIN_FOLDER)/$(TARGET)
