@@ -1,10 +1,10 @@
 #include "logic.h"
 
-pos _position;
+vector2_t _position;
 char _movesCount = 1;
 
-_Bool _setMatrix(char matrix[3][3], char symbol) {
-    char* pointer = &matrix[_position.x][_position.y];
+_Bool _set_matrix(char gameField[3][3], char symbol) {
+    char* pointer = &gameField[_position.x][_position.y];
     if (*pointer != ' ') return 1;
     *pointer = symbol;
     return 0;
@@ -16,10 +16,10 @@ _Bool _equal(char* array, char size) {
     return 1;
 }
 
-_Bool _checkThreeInARow(char* winner, char matrix[3][3], char symbol) {
+_Bool _check_three_in_a_row(char* winner, char gameField[3][3], char symbol) {
     for (char i = 0; i < 3; ++i) {
-        char checkVertically[4] = {symbol, matrix[i][0], matrix[i][1], matrix[i][2]},
-            checkHorizontally[4] = {symbol, matrix[0][i], matrix[1][i], matrix[2][i]};
+        char checkVertically[4] = {symbol, gameField[i][0], gameField[i][1], gameField[i][2]},
+            checkHorizontally[4] = {symbol, gameField[0][i], gameField[1][i], gameField[2][i]};
         if (_equal(checkVertically, 4) || _equal(checkHorizontally, 4)) {
             *winner = symbol;
             return 1;
@@ -28,10 +28,10 @@ _Bool _checkThreeInARow(char* winner, char matrix[3][3], char symbol) {
     return 0;
 }
 
-_Bool _checkCross(char* winner, char matrix[3][3], char symbol) {
-    if (matrix[1][1] != symbol) return 0;
-    char checkCross[3] = {symbol, matrix[0][0], matrix[2][2]},
-        checkCross2[3] = {symbol, matrix[2][0], matrix[0][2]};
+_Bool _check_cross(char* winner, char gameField[3][3], char symbol) {
+    if (gameField[1][1] != symbol) return 0;
+    char checkCross[3] = {symbol, gameField[0][0], gameField[2][2]},
+        checkCross2[3] = {symbol, gameField[2][0], gameField[0][2]};
     if (_equal(checkCross, 3) || _equal(checkCross2, 3)) {
         *winner = symbol;
         return 1;
@@ -39,15 +39,15 @@ _Bool _checkCross(char* winner, char matrix[3][3], char symbol) {
     return 0;
 }
 
-void _checkWinner(char* winner, char matrix[3][3], char symbol) {
-    if (_checkThreeInARow(winner, matrix, symbol) ||
-        _checkCross(winner, matrix, symbol) || ++_movesCount < 10) 
+void _checkWinner(char* winner, char gameField[3][3], char symbol) {
+    if (_check_three_in_a_row(winner, gameField, symbol) ||
+        _check_cross(winner, gameField, symbol) || ++_movesCount < 10) 
         return;
     *winner = '!';
 }
 
-void doLogic(char* winner, char matrix[3][3], char* symbol) {
-    if (setPosition(&_position) || _setMatrix(matrix, *symbol)) return;
-    _checkWinner(winner, matrix, *symbol);
+void do_game_logic(char* winner, char gameField[3][3], char* symbol) {
+    if (set_position(&_position) || _set_matrix(gameField, *symbol)) return;
+    _checkWinner(winner, gameField, *symbol);
     *symbol = *winner ? *winner : *symbol == 'X' ? 'O' : 'X'; 
 }

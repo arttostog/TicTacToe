@@ -3,8 +3,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "pos.h"
+#include "vector2.h"
 
-_Bool setPosition(pos* position);
+_Bool set_position(vector2_t* position);
 
 #endif

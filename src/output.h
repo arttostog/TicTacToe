@@ -3,6 +3,6 @@
 
 #include <stdio.h>
 
-void printMenu(char matrix[3][3], char symbol);
+void print_menu(char gameField[3][3], char symbol);
 
 #endif

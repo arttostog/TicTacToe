@@ -2,7 +2,7 @@
 #include "output.h"
 #include "logic.h"
 
-char symbol = 'X', winner = 0, matrix[3][3] = {
+char symbol = 'X', winner = 0, gameField[3][3] = {
     {' ', ' ', ' '},
     {' ', ' ', ' '},
     {' ', ' ', ' '}
@@ -11,10 +11,10 @@ char symbol = 'X', winner = 0, matrix[3][3] = {
 int main()
 {
     while(!winner) {
-        printMenu(matrix, symbol);
-        doLogic(&winner, matrix, &symbol);
+        print_menu(gameField, symbol);
+        do_game_logic(&winner, gameField, &symbol);
     }
-    printMenu(matrix, symbol);
+    print_menu(gameField, symbol);
     printf(winner == '!' ? "Draw%c\n" : "Winner is %c!\n", winner);
     return 0;
 }
