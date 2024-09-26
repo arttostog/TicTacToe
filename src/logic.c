@@ -28,7 +28,7 @@ _Bool _check_three_in_a_row(char* winner, char gameField[3][3], char symbol) {
     return 0;
 }
 
-_Bool _check_cross(char* winner, char gameField[3][3], char symbol) {
+_Bool _check_crosses(char* winner, char gameField[3][3], char symbol) {
     if (gameField[1][1] != symbol) return 0;
     char checkCross[3] = {symbol, gameField[0][0], gameField[2][2]},
         checkCross2[3] = {symbol, gameField[2][0], gameField[0][2]};
@@ -41,7 +41,7 @@ _Bool _check_cross(char* winner, char gameField[3][3], char symbol) {
 
 void _checkWinner(char* winner, char gameField[3][3], char symbol) {
     if (_check_three_in_a_row(winner, gameField, symbol) ||
-        _check_cross(winner, gameField, symbol) || ++_movesCount < 10) 
+        _check_crosses(winner, gameField, symbol) || ++_movesCount < 10) 
         return;
     *winner = '!';
 }
