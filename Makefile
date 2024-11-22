@@ -1,5 +1,5 @@
 TARGET = TicTacToe
-SOURCE_FILES = ./src/main.c ./src/output.c ./src/logic.c ./src/input.c
+GCC_FLAGS = -I./include
 
 ifeq ($(OS), Windows_NT)
 	CLEAN_COMMAND = del $(TARGET).exe
@@ -8,7 +8,7 @@ else
 endif
 
 $(TARGET): $(SOURCE_FILES)
-	gcc $(SOURCE_FILES) -o $(TARGET)
+	gcc $(GCC_FLAGS) $(wildcard ./src/*.c) -o $(TARGET)
 
 clean:
 	$(CLEAN_COMMAND)

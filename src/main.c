@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "output.h"
+#include <output.h>
 #include "logic.h"
 
 char symbol = 'X', winner = 0, gameField[3][3] = {

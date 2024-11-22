@@ -1,4 +1,4 @@
-#include "input.h"
+#include <input.h>
 
 _Bool set_position(vector2_t* position) {
     printf("X Y: ");

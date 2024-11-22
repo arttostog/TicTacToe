@@ -1,4 +1,4 @@
-#include "output.h"
+#include <output.h>
 
 void print_menu(char gameField[3][3], char symbol) {
     if (symbol == '!') symbol = '-';
