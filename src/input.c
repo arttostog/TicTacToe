@@ -1,8 +1,9 @@
 #include <input.h>
 
-_Bool set_position(vector2_t* position) {
+point_t get_new_position() {
     printf("X Y: ");
-    if (!scanf("%hhd %hhd", &position->x, &position->y)) abort();
-    if (position->x > 2 || position->y > 2) return 1;
-    return 0;
+    point_t position;
+    if (!scanf("%d %d", &position.x, &position.y) || position.x > 2 || position.y > 2)
+        abort();
+    return position;
 }

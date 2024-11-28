@@ -1,12 +1,23 @@
 #include <output.h>
 
+char menu[58] = {
+    '\n',
+    '-', '-', '-', '-', '-', '-', '-', '\n',
+    '|', '.', '|', '.', '|', '.', '|', '\n',
+    '-', '-', '-', '-', '-', '-', '-', '\n',
+    '|', '.', '|', '.', '|', '.', '|', '\n',
+    '-', '-', '-', '-', '-', '-', '-', '\n',
+    '|', '.', '|', '.', '|', '.', '|', '\n',
+    '-', '-', '-', '-', '-', '-', '-', '\n', '\n'
+};
+
 void print_menu(char gameField[3][3], char symbol) {
-    if (symbol == '!') symbol = '-';
-    printf("\n---%c---\n", symbol);
-    for (char y = 0; y < 3; ++y) {
-        for (char x = 0; x < 3; ++x)
-            printf("|%c", gameField[x][y]);
-        printf("|\n-------\n");
-    }
-    printf("\n");
+    if (symbol != '!')
+        menu[4] = symbol;
+
+    for (int i = 10, y = 0; y < 3; i += 10, ++y)
+        for (int x = 0; x < 3; i += 2, ++x)
+            menu[i] = gameField[y][x];
+
+    printf(menu);
 }

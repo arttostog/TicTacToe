@@ -2,8 +2,8 @@
 #define LOGIC_H
 
 #include "input.h"
-#include "vector2.h"
+#include <point.h>
 
-void do_game_logic(char* winner, char gameField[3][3], char* symbol);
+void do_game_logic(char gameField[3][3], char* movesCount, char* symbol, char* winner);
 
 #endif

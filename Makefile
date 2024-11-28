@@ -1,14 +1,14 @@
-TARGET = TicTacToe
+OUTPUT = tictactoe
 GCC_FLAGS = -I./include
 
 ifeq ($(OS), Windows_NT)
-	CLEAN_COMMAND = del $(TARGET).exe
+	CLEAN_COMMAND = del $(OUTPUT).exe
 else
-	CLEAN_COMMAND = rm $(TARGET)
+	CLEAN_COMMAND = rm $(OUTPUT)
 endif
 
-$(TARGET): $(SOURCE_FILES)
-	gcc $(GCC_FLAGS) $(wildcard ./src/*.c) -o $(TARGET)
+$(OUTPUT): $(SOURCE_FILES)
+	gcc $(GCC_FLAGS) $(wildcard ./src/*.c) -o $(OUTPUT)
 
 clean:
 	$(CLEAN_COMMAND)
