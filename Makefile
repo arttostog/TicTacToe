@@ -7,7 +7,7 @@ else
 	CLEAN_COMMAND = rm $(OUTPUT)
 endif
 
-$(OUTPUT): $(SOURCE_FILES)
+$(OUTPUT):
 	gcc $(GCC_FLAGS) $(wildcard ./src/*.c) -o $(OUTPUT)
 
 clean:
